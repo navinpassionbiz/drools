@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+exec > >(tee -i kieserver.log)
+exec 2>&1
 
 # If not server identifier set via docker env variable, use the container's hostname as server id.
 if [ ! -n "$KIE_SERVER_ID" ]; then
@@ -8,7 +10,7 @@ echo "Using '$KIE_SERVER_ID' as KIE server identifier"
 
 # If this KIE execution server container is linked with some KIE Workbench container, the following environemnt variables will be present, so configure the application arguments based on their values.
 if [ -n "$KIE_WB_PORT_8080_TCP" ] &&  [ -n "$KIE_WB_ENV_KIE_CONTEXT_PATH" ] &&  [ -n "$KIE_WB_PORT_8080_TCP_ADDR" ]; then
-    
+
     # If not public IP configured using the DOCKER_IP env, obtain the internal network address for this container.
     if [ ! -n "$DOCKER_IP" ]; then
     # Obtain current container's IP address.
@@ -37,7 +39,19 @@ if [ -n "$KIE_SERVER_CONTROLLER" ]; then
     JBOSS_ARGUMENTS="$JBOSS_ARGUMENTS -Dorg.kie.server.controller=$KIE_SERVER_CONTROLLER -Dorg.kie.server.controller.user=$KIE_SERVER_CONTROLLER_USER -Dorg.kie.server.controller.pwd=$KIE_SERVER_CONTROLLER_PWD "
 fi
 
+./curl_kie-server.sh &
+
 # Start Wildfly with the given arguments.
 echo "Running KIE Execution Server on JBoss Wildfly..."
 ./standalone.sh $JBOSS_ARGUMENTS -c standalone-full-kie-server.xml
-exit $?
+
+#DATE=`date '+%Y-%m-%d %H:%M:%S'`
+#echo "creating hello container $DATE"
+#sleep 60
+#echo "executing curl command $DATE"
+#tail -f ../standalone/log/server.log | grep -m 1 'WildFly Full 14.0.1.Final (WildFly Core 6.0.2.Final) started'
+#curl http://localhost:8080/kie-server/services/rest/server
+#curl -X PUT -H 'Content-type:application/xml' -u 'kieserver:kieserver1!' --data @createHelloContainer.xml http://localhost:8080/kie-server/services/rest/server/containers/hello
+#sleep 30
+#exit $?
+

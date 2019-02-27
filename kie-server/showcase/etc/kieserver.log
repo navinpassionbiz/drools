@@ -1,0 +1,29 @@
+creating hello container 2019-02-27 12:29:12
+executing curl command 2019-02-27 12:29:12
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    71  100    71    0     0   2151      0 --:--:-- --:--:-- --:--:--  2151
+<html><head><title>Error</title></head><body>Unauthorized</body></html>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   270    0     0  100   270      0   1273 --:--:-- --:--:-- --:--:--  1267100   270    0     0  100   270      0    222  0:00:01  0:00:01 --:--:--   222100   270    0     0  100   270      0    122  0:00:02  0:00:02 --:--:--   121100   270    0     0  100   270      0     84  0:00:03  0:00:03 --:--:--    83100   270    0     0  100   270      0     64  0:00:04  0:00:04 --:--:--    64100   270    0     0  100   270      0     51  0:00:05  0:00:05 --:--:--     0100   270    0     0  100   270      0     43  0:00:06  0:00:06 --:--:--     0100  1245  100   975  100   270    156     43  0:00:06  0:00:06 --:--:--   241
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response type="SUCCESS" msg="Container hello successfully deployed with module org.ipodrools.kieserver:hello-kie-server:1.0.">
+    <kie-container container-id="hello" status="STARTED">
+        <messages>
+            <content>Container hello successfully created with module org.ipodrools.kieserver:hello-kie-server:1.0.</content>
+            <severity>INFO</severity>
+            <timestamp>2019-02-27T12:31:18.828Z</timestamp>
+        </messages>
+        <release-id>
+            <artifact-id>hello-kie-server</artifact-id>
+            <group-id>org.ipodrools.kieserver</group-id>
+            <version>1.0</version>
+        </release-id>
+        <resolved-release-id>
+            <artifact-id>hello-kie-server</artifact-id>
+            <group-id>org.ipodrools.kieserver</group-id>
+            <version>1.0</version>
+        </resolved-release-id>
+        <scanner status="DISPOSED"/>
+    </kie-container>
+</response>

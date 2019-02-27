@@ -4,7 +4,7 @@
 # KIE Server Showcase - Docker image build script
 # ************************************************
 
-IMAGE_NAME="jboss/kie-server-showcase"
+IMAGE_NAME="jboss/kie-server-showcase-ipo"
 IMAGE_TAG="latest"
 
 
