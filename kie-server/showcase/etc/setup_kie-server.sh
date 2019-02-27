@@ -4,7 +4,8 @@ exec 2>&1
 
 # If not server identifier set via docker env variable, use the container's hostname as server id.
 if [ ! -n "$KIE_SERVER_ID" ]; then
-    export KIE_SERVER_ID=kie-server-$HOSTNAME
+    #export KIE_SERVER_ID=kie-server-$HOSTNAME
+    export KIE_SERVER_ID=kie-server-IPOPOC
 fi
 echo "Using '$KIE_SERVER_ID' as KIE server identifier"
 
@@ -39,11 +40,14 @@ if [ -n "$KIE_SERVER_CONTROLLER" ]; then
     JBOSS_ARGUMENTS="$JBOSS_ARGUMENTS -Dorg.kie.server.controller=$KIE_SERVER_CONTROLLER -Dorg.kie.server.controller.user=$KIE_SERVER_CONTROLLER_USER -Dorg.kie.server.controller.pwd=$KIE_SERVER_CONTROLLER_PWD "
 fi
 
-./curl_kie-server.sh &
+#./curl_kie-server.sh &
 
 # Start Wildfly with the given arguments.
 echo "Running KIE Execution Server on JBoss Wildfly..."
-./standalone.sh $JBOSS_ARGUMENTS -c standalone-full-kie-server.xml
+./standalone.sh $JBOSS_ARGUMENTS -c standalone-full-kie-server.xml &
+#./standalone.sh $JBOSS_ARGUMENTS -c standalone-full-kie-server.xml
+
+./curl_kie-server.sh
 
 #DATE=`date '+%Y-%m-%d %H:%M:%S'`
 #echo "creating hello container $DATE"
@@ -53,5 +57,5 @@ echo "Running KIE Execution Server on JBoss Wildfly..."
 #curl http://localhost:8080/kie-server/services/rest/server
 #curl -X PUT -H 'Content-type:application/xml' -u 'kieserver:kieserver1!' --data @createHelloContainer.xml http://localhost:8080/kie-server/services/rest/server/containers/hello
 #sleep 30
-#exit $?
+exit $?
 
