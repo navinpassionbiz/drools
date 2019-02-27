@@ -53,8 +53,8 @@ USER jboss
 ####### RUNNING KIE-SERVER ############
 WORKDIR $JBOSS_HOME/bin/
 #CMD ["./setup_kie-server.sh"]
-#RUN ./setup_kie-server.sh
+RUN ./setup_kie-server.sh
 #RUN ./create_container.sh
-#CMD ["./start_kie-server.sh"]
-CMD ["./setup_kie-server.sh"]
+CMD ["./start_kie-server.sh"]
+#CMD ["./setup_kie-server.sh"]
 

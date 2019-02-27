@@ -5,7 +5,7 @@
 # ************************************************
 
 IMAGE_NAME="jboss/kie-server-showcase-ipo"
-IMAGE_TAG="latest"
+IMAGE_TAG="latest-1"
 
 
 # Build the container image.
