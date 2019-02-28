@@ -2,7 +2,7 @@
 
 # If not server identifier set via docker env variable, use the container's hostname as server id.
 if [ ! -n "$KIE_SERVER_ID" ]; then
-    export KIE_SERVER_ID=kie-server-$HOSTNAME
+    export KIE_SERVER_ID=kie-server-IPOPOC
 fi
 echo "Using '$KIE_SERVER_ID' as KIE server identifier"
 
